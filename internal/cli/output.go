@@ -122,6 +122,7 @@ Commands:
   sql
   members
   channels
+  export
   status
   report
   doctor
@@ -212,6 +213,17 @@ Flags:
   --confirm                   Required with --unsafe.
 
 Read-only SQL is allowed by default. Use "-" or no query to read SQL from stdin.
+`,
+	"export": `Usage:
+  discrawl export adapter [flags]
+
+Flags:
+  --since RFC3339             Only messages at or after timestamp.
+  --limit N                   Maximum messages to emit. Default: all.
+  --channel ID_OR_NAME        Restrict to a channel id or name.
+  --guild ID                  Restrict to one guild id.
+  --guilds ID,ID              Restrict to guild ids.
+  --out PATH                  Output file or - for stdout. Default: -.
 `,
 }
 

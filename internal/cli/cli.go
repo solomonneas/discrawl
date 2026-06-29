@@ -264,6 +264,11 @@ func (r *runtime) dispatch(rest []string) error {
 		return r.withLocalStoreRead(true, func() error { return r.runMembers(rest[1:]) })
 	case "channels":
 		return r.withLocalStoreRead(true, func() error { return r.runChannels(rest[1:]) })
+	case "export":
+		if hasHelpArg(rest[1:]) {
+			return printCommandUsage(r.stdout, []string{"export"})
+		}
+		return r.withLocalStoreRead(false, func() error { return r.runExport(rest[1:]) })
 	case "status":
 		return r.withLocalStoreReadOnly(func() error { return r.runStatus(rest[1:]) })
 	case "report":
